@@ -1,0 +1,63 @@
+$visual-grid: true !default;
+$visual-grid-color: #000 !default;
+$visual-grid-opacity: .05 !default;
+
+@import 'neat',
+'gridSettings',
+'globalVars';
+
+body {
+	@include grid-visual;
+}
+
+.hero {
+	@include grid-column(12);
+}
+
+.news {
+	@include grid-column(6);
+	@include grid-media($large-phone-down) {
+		@include grid-column(12);
+	}
+}
+
+.updates {
+	// @include grid-container;
+	//@include grid-visual;
+	@include grid-column(6);
+	@include grid-media($large-phone-down) {
+		@include grid-column(12);
+	}
+}
+
+:fullscreen a {
+	display: flex;
+}
+
+// .article-layout {
+// 	@include grid-container;
+// 	@include grid-visual;
+// }
+
+// .article-layout__hero {
+// 	@include grid-column(1, $article-layout-grid);
+// 	background-color: $grey2;
+// 	margin-bottom: 2rem;
+// }
+//
+// .article-layout__sidebar {
+// 	@include grid-column(1, $article-layout-grid);
+// 	@include grid-media($article-layout-grid--tablet-up) {
+// 		@include grid-column(2);
+// 	}
+// 	background-color: $grey2;
+// 	margin-bottom: 2rem;
+// }
+//
+// .article-layout__main {
+// 	@include grid-column(1, $article-layout-grid);
+// 	@include grid-media($article-layout-grid--tablet-up) {
+// 		@include grid-column(3);
+// 	}
+// 	background-color: $grey2;
+// }

@@ -1,0 +1,54 @@
+// Device Widths
+$bottom: 390px; // Apple iPhone 6 and Smaller
+$small-phone: 414px; // Nexus 6P Portrait
+$large-phone: 666px; // iPhone 6 Plus Landscape
+$small-screen: 736px; // Apple iPhone 6 Plus Landscape and Smaller (Anything below this size will see the mobile theme)
+$medium-screen-before-break-size: 737px; // Apple iPhone 6 Plus Landscape + 1px (Right before we break to mobile theme)
+// Any device/screen width that falls in between these two will be shown the tablet theme
+$medium-screen: 1079px; // 1px less than the container wrapper width
+$large-screen: 1080px; // The container width
+
+// Decreasing Breakpoints
+$bottom-down: '(max-width: $bottom)';
+$small-phone-down: '(max-width: $small-phone)';
+$small-screen-down: '(max-width: $small-screen)';
+$large-phone-down: '(max-width: $large-phone)';
+$medium-screen-before-break-down: '(max-width: $medium-screen-before-break-size)';
+$medium-screen-down: '(max-width: $medium-screen)';
+$large-screen-down: '(max-width: $large-screen)';
+
+// Before Breakpoints
+$medium-screen-before-break: '(max-width: $medium-screen-before-break-size)';
+
+// Target Screens at Device Widths
+$bottom-only: '(width: $bottom)';
+$small-screen-only: '(width: $small-screen)';
+$medium-screen-only: '(width: $medium-screen)';
+$large-screen-only: '(width: $large-screen)';
+
+// Increasing Breakpoints
+$bottom-up: '(min-width: $bottom)';
+$small-screen-up: '(min-width: $small-screen)';
+$medium-screen-before-break-up: '(min-width: $medium-screen-before-break-size)';
+$medium-screen-up: '(min-width: $medium-screen)';
+$large-screen-up: '(min-width: $large-screen)';
+
+$neat-grid: (
+	columns: 12,
+	gutter: 20px,
+);
+
+$large-phone-down: (
+	media: $large-phone-down
+);
+
+// $article-layout-grid: (
+// 	columns: 1,
+// 	gutter: 2rem,
+// );
+//
+// $article-layout-grid--tablet-up: (
+// 	columns: 5,
+// 	gutter: 2rem,
+// 	media: '(min-width: 768px)'
+// );

@@ -1,0 +1,72 @@
+//Fonts
+$font-stack: 'Helvetica Neue', 'Open Sans', sans-serif;
+
+//Colors
+$purple-pink:       #be5f75;
+$red:               #f00;
+$red1:              #a52d2d;
+$red2:              #bd411b;
+$red3:              #a52f2f;
+$red4:              #a42e30;
+$orange:            #ef8e2f;
+$yellow1: 		    #f5b82a;
+$yellow2:           #a4a4a4;
+$yellow3:           #ffffcd;
+$brown:             #804d38;
+$tan:               #d5cfbf;
+$tan-light:         #f2f1ec;
+$tan-lighter:       #f7f7f4;
+$brand-blue:        #0070af;
+$light-blue:        #7297a9;
+$lighter-blue:      #dde7e9;
+$green:             #b2a847;
+$black:             #444;
+$grey1:             #888;
+$grey2:             #ccc;
+$gray3:             #aaa;
+$gray4:             #eee;
+$gray5:             #111;
+$gray6:             #222;
+$white:             #fff;
+$lightTurquoise:    #8fdce5;
+$mediumTurquoise:   #3dc3d1;
+$darkTurquoise:     #2aa4b2;
+$darkBoxShadowRGBA:     rgba(255, 255, 255, .45);
+
+//Color Applications
+$color-FinancingInFooter: 			$purple-pink;
+$color-SalePromoButton: 			$red1;
+$color-SaleProductMarketingBadge: 	$red1;
+$color-SalePricing: 				$red1;
+$color-Error: 						$red1;
+$color-SalePromoText: 				$red2;
+$color-WishlistIconHoverState:		$red2;
+$color-RequiredFieldsNotice:		$red3;
+$color-InfoBar:						$red4;
+$color-Buttons1:					$orange;
+$color-InHomeConsultationInFooter: 	$orange;
+$color-DepositDeliveryToolTip: 		$orange;
+$color-Buttons2:					$yellow1;
+$color-ErrorSuccessBar:				$yellow3;
+$color-FormFieldErrorColor:			$yellow3;
+$color-BG:							$tan;
+$color-BGModules:					$tan;
+$color-DesktopMainNavText:			$tan;
+$color-LightBackgrounds:			$tan-lighter;
+$color-HoverStates:					$tan-lighter;
+$color-BreadcrumbBar:				$tan-lighter;
+$color-CDPBGUnderImagesShowMore:	$tan-lighter;
+$color-TextLinks:					$brand-blue;
+$color-DepositBalanceShoppingCart:	$brand-blue;
+$color-HeaderNavBar:				$light-blue;
+$color-HeaderNavBarHover:			$tan-light;
+$color-ShopiPadInFooter:			$green;
+$color-SuccessfulAddCheckmark:		$green;
+$color-IconsLighterText:			$grey1;
+$color-StrokesRules:				$grey1;
+$color-Cart5YearFabricProtection:	$lighter-blue;
+$color-BgCheckoutBtn: 				#ffc559;
+
+$primary-nav-height: 36px;
+$primary-nav-width: 1000px;
+$util-nav-items-seperator-color: #8c8c8c;
