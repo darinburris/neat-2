@@ -2,7 +2,11 @@
   "name": "neat-2",
   "version": "1.0.0",
   "description": "Playing around with Neat v2",
-  "main": "index.js",
+  "main": "gulpfile.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/darinburris/neat-2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,7 +17,7 @@
   },
   "devDependencies": {
     "bourbon-neat": "^2.0.0",
-    "gulp": "^3.9.1",
+    "gulp": "github:gulpjs/gulp#4.0",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-changed": "^3.1.0",
     "gulp-clean": "^0.3.2",

@@ -11,95 +11,108 @@ const gulp = require('gulp'),
 	clean = require('gulp-clean'),
 	autoprefixer = require('gulp-autoprefixer');
 
-gulp.task('sass',
-	function() {
-		gulp.src('./scss/**/*.scss')
-			.pipe(
-				sass(
-					{
-						//includePaths: require('node-bourbon').includePaths,
-						includePaths: require('node-neat').includePaths,
-						outputStyle: 'expanded'
-					}
-				)
+// Compile sass files
+function compileSass() {
+	return gulp.src('./source/scss/**/*.scss')
+		.pipe(
+			sass(
+				{
+					includePaths: require('node-neat').includePaths,
+					outputStyle: 'expanded'
+				}
 			)
-			.pipe(gulp.dest('./release/css')
-			.on('error', sass.logError)
-		);
-	}
-);
+		)
+		.pipe(gulp.dest('./release/css')
+		.on('error', sass.logError)
+	);
+}
 
-gulp.task('autoprefixer',
-	() =>
-		gulp.src('./release/css/**/*.css')
-			.pipe(autoprefixer({
+// lint sass files prior to compilation
+function lintSass() {
+	return gulp.src(
+		[
+			'./source/scss/**/*.scss',
+			'!./source/scss/_mixins.scss'
+		]
+	)
+	.pipe(
+		sassLint(
+			{
+				configFile: '.sass-lint.yml'
+			}
+		)
+	)
+	.pipe(sassLint.format())
+	.pipe(sassLint.failOnError())
+}
+
+// run autoprefixer on compiled css files
+function ap() {
+	return gulp.src('./release/css/**/*.css')
+		.pipe(
+			autoprefixer({
 				browsers: ['last 2 versions'],
 				cascade: false
 			}
 		)
 	)
 	.pipe(gulp.dest('./release/css/'))
-);
+}
 
-gulp.task('sass:lint',
-	function () {
-		return gulp.src(
-			[
-				'./scss/**/*.scss',
-				'!./scss/_mixins.scss'
-			]
-		)
-		.pipe(
-			sassLint(
-				{
-					configFile: '.sass-lint.yml'
-				}
-			)
-		)
-		.pipe(sassLint.format())
-		.pipe(sassLint.failOnError())
-	}
-);
+//watch task for edited files
+function watching() {
+	gulp.watch('./source/scss/**/*.scss', gulp.series(compileCSS));
+	gulp.watch('./source/js/**/*.js', gulp.series(copyJS));
+	gulp.watch('./source/**/*.html', gulp.series(copyHTML));
+}
 
-gulp.task('watch',
-	function() {
-		gulp.watch('./scss/**/*.scss', ['sass:lint','sass']);
-		//The following line is for when you need to watch html files
-		//gulp.watch('./source/**/*.html', ['copyHTML']);
-	}
-);
+//concatinate js files
+function concatjs() {
+	return gulp.src(['./source/js/js1.js','./source/js/js2.js'])
+	.pipe(concat('all.js'))
+	.pipe(gulp.dest('./release/js'));
+}
 
-gulp.task('concatjs',
-	function() {
-		return gulp.src('')
-		.pipe(concat('all.js'))
-		.pipe(gulp.dest('./js'));
-	}
-);
+//concatinate css files
+function concatcss() {
+	return gulp.src(['./release/css/main.css','./release/css/page.css'])
+	.pipe(concat('all.css'))
+	.pipe(gulp.dest('./release/css'));
+}
 
-gulp.task('concatcss',
-	function() {
-		return gulp.src(ampconfig.build.concat.css)
-		.pipe(concat('all.css'))
-		.pipe(gulp.dest('./release/css'));
-	}
-);
+//copy html files from source directory into release directory
+function copyHTML() {
+	return gulp.src(['./source/**/*.html','!./node_modules/**'])
+	.pipe(gulp.dest('./release'));
+}
 
-gulp.task('copy',
-	function() {
-		return gulp.src('./index.html')
-		.pipe(gulp.dest('./release'));
-	}
-);
+//copy js files from source directory into release directory
+function copyJS() {
+	return gulp.src(['./source/**/*.js','!./node_modules/**'])
+	.pipe(gulp.dest('./release'));
+}
 
-gulp.task('clean',
-	function () {
-		return gulp.src(['./css','./js'], {read: false})
-		.pipe(clean());
-	}
-);
+//delete release directory as part of larger build task in order to ensure a clean codebase
+function delRelease() {
+	return gulp.src(['./release'], {read: false})
+	.pipe(clean());
+}
 
-gulp.task('build:css', ['sass:lint','sass','autoprefixer']);
+//delete css css directory as part of compileCSS task
+function delCSS() {
+	return gulp.src(['./release/css'], {read: false})
+	.pipe(clean());
+}
+
+// const dependendTasks = gulp.series(delRelease, copyHTML, lintSass, compileSass, ap);
+const compileCSS = gulp.series(lintSass, delCSS, compileSass, ap, concatcss);
+const optimizeAssets = gulp.parallel(concatjs,concatcss);
+const wa = gulp.series(watching);
+const build = gulp.series(delRelease, copyHTML, compileCSS);
 
 //this is how to assign multiple tasks to a single task
-gulp.task('default', ['build:css','copy']);
+//gulp.task('default', ['build:css','copyHTML']);
+gulp.task('watch', wa);
+gulp.task('compileCSS', compileCSS);
+gulp.task('optimizeAssets', optimizeAssets);
+gulp.task('default', build);

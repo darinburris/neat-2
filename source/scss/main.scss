@@ -8,6 +8,7 @@ body {
 		@include grid-column(8);
 		@include grid-visual;
 	}
+
 }
 
 .hero {
@@ -28,10 +29,6 @@ body {
 	@include grid-media($large-phone) {
 		@include grid-column(12);
 	}
-}
-
-:fullscreen a {
-	display: flex;
 }
 
 // .article-layout {
