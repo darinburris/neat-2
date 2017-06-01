@@ -1,13 +1,13 @@
-$visual-grid: true !default;
-$visual-grid-color: #000 !default;
-$visual-grid-opacity: .05 !default;
-
 @import 'neat',
 'gridSettings',
 'globalVars';
 
 body {
 	@include grid-visual;
+	@include grid-media($custom-neat-grid) {
+		@include grid-column(8);
+		@include grid-visual;
+	}
 }
 
 .hero {
@@ -16,7 +16,7 @@ body {
 
 .news {
 	@include grid-column(6);
-	@include grid-media($large-phone-down) {
+	@include grid-media($large-phone) {
 		@include grid-column(12);
 	}
 }
@@ -25,7 +25,7 @@ body {
 	// @include grid-container;
 	//@include grid-visual;
 	@include grid-column(6);
-	@include grid-media($large-phone-down) {
+	@include grid-media($large-phone) {
 		@include grid-column(12);
 	}
 }

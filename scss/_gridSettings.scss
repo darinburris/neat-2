@@ -9,36 +9,42 @@ $medium-screen: 1079px; // 1px less than the container wrapper width
 $large-screen: 1080px; // The container width
 
 // Decreasing Breakpoints
-$bottom-down: '(max-width: $bottom)';
-$small-phone-down: '(max-width: $small-phone)';
-$small-screen-down: '(max-width: $small-screen)';
-$large-phone-down: '(max-width: $large-phone)';
-$medium-screen-before-break-down: '(max-width: $medium-screen-before-break-size)';
-$medium-screen-down: '(max-width: $medium-screen)';
-$large-screen-down: '(max-width: $large-screen)';
+$bottom-down: '(max-width: 390px)';
+$small-phone-down: '(max-width: 414px)';
+$small-screen-down: '(max-width: 736px)';
+$large-phone-down: '(max-width: 666px)';
+$medium-screen-before-break-down: '(max-width: 737px)';
+$medium-screen-down: '(max-width: 1079px)';
+$large-screen-down: '(max-width: 1080px)';
 
 // Before Breakpoints
-$medium-screen-before-break: '(max-width: $medium-screen-before-break-size)';
+$medium-screen-before-break: '(max-width: 737px)';
 
 // Target Screens at Device Widths
-$bottom-only: '(width: $bottom)';
-$small-screen-only: '(width: $small-screen)';
-$medium-screen-only: '(width: $medium-screen)';
-$large-screen-only: '(width: $large-screen)';
+$bottom-only: '(width: 390px)';
+$small-screen-only: '(width: 736px)';
+$medium-screen-only: '(width: 1079px)';
+$large-screen-only: '(width: 1080px)';
 
 // Increasing Breakpoints
-$bottom-up: '(min-width: $bottom)';
-$small-screen-up: '(min-width: $small-screen)';
-$medium-screen-before-break-up: '(min-width: $medium-screen-before-break-size)';
-$medium-screen-up: '(min-width: $medium-screen)';
-$large-screen-up: '(min-width: $large-screen)';
+$bottom-up: '(min-width: 390px)';
+$small-screen-up: '(min-width: 736px)';
+$medium-screen-before-break-up: '(min-width: 737px)';
+$medium-screen-up: '(min-width: 1079px)';
+$large-screen-up: '(min-width: 1080px)';
 
 $neat-grid: (
 	columns: 12,
 	gutter: 20px,
 );
 
-$large-phone-down: (
+$large-phone: (
+	media: $large-phone-down
+);
+
+$custom-neat-grid: (
+	columns: 8,
+	gutter: 10px,
 	media: $large-phone-down
 );
 
