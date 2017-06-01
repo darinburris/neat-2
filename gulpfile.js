@@ -105,10 +105,10 @@ function delCSS() {
 }
 
 // const dependendTasks = gulp.series(delRelease, copyHTML, lintSass, compileSass, ap);
-const compileCSS = gulp.series(lintSass, delCSS, compileSass, ap, concatcss);
-const optimizeAssets = gulp.parallel(concatjs,concatcss);
 const wa = gulp.series(watching);
-const build = gulp.series(delRelease, copyHTML, compileCSS);
+const compileCSS = gulp.series(lintSass, compileSass, ap);
+const optimizeAssets = gulp.parallel(concatjs,concatcss);
+const build = gulp.series(delRelease, copyHTML, copyJS, compileCSS, optimizeAssets);
 
 //this is how to assign multiple tasks to a single task
 //gulp.task('default', ['build:css','copyHTML']);
